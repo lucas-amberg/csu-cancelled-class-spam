@@ -32,7 +32,8 @@ def get_school_choice():
   print('Welcome to the CSU Cancelled Class spammer')
   print('Currently we have these schools available: ')
   print('San Bernardino (0)')
-  available_choices = ['0'] # Array of correct options
+  print('Fullerton (1)')
+  available_choices = ['0', '1'] # Array of correct options
   choice = ''
 
   # While loop ensures valid selection
@@ -44,8 +45,10 @@ def get_school_choice():
 
 # This function spams the form from the selected choice
 def spam_form(school_choice):
-  if school_choice == 0:
+  if school_choice == 0: # CSUSB
     url = 'https://app.smartsheet.com/b/form/2945d82fd2bc46668b724f4f2e5d87e3'
+  elif school_choice == 1: # CSUF
+    url = 'https://app.smartsheet.com/b/form/758f260d8d114de5bb2ba5877dfe2042'
   
   num_of_entries = input('Please enter the number of entries you would like to do: ')
   driver = webdriver.Chrome()
