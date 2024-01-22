@@ -3,6 +3,10 @@ from selenium.webdriver.common.by import By
 import random
 import names
 
+
+
+import time
+
 fake_class_codes = [
     'CIS317', 'MTH424', 'MTH397', 'BIO155', 'ENG285', 'HIS310', 'MTH471', 'PSY456', 
     'ENG270', 'MTH165', 'HIS167', 'ENG451', 'PSY316', 'CIS348', 'ENG180', 'MTH257', 
@@ -20,7 +24,8 @@ fake_class_codes = [
 ]
 
 fake_time_minutes = ['00', '15', '30', '45']
-email_sites = ['gmail', 'yahoo', 'msn']
+email_sites = ['gmail', 'yahoo', 'msn', 'aol']
+key_choice = ['.', '', '_']
 
 # This function returns the choice of school that the user selects
 def get_school_choice():
@@ -44,13 +49,14 @@ def spam_form(school_choice):
   
   num_of_entries = input('Please enter the number of entries you would like to do: ')
   driver = webdriver.Chrome()
-  driver.get(url)
+  
   for i in range(int(num_of_entries)):
+    driver.get(url)
     fake_name = names.get_full_name() # Generates a fake name
     name_box = driver.find_element(By.ID, 'text_box_Instructor/Coach/Counselor/Librarian')
     name_box.send_keys(fake_name) # Sends fake name to form
 
-    random_key = random.randint(0, 100)
+    random_key = random.randint(0, 99)
     fake_class = fake_class_codes[random_key] # Selects a random fake class name to submit
     class_box = driver.find_element(By.ID, 'text_box_Class/Student Service')
     class_box.send_keys(fake_class)
@@ -59,22 +65,33 @@ def spam_form(school_choice):
     date_box = driver.find_element(By.ID, 'date_Date of Class or Service')
     date_box.send_keys(fake_date)
 
-    fake_time = str(random.randint(1,12)) + ':' + fake_time_minutes[random.randint(0,4)] # Creates a random time
+    fake_time = str(random.randint(1,12)) + ':' + fake_time_minutes[random.randint(0,3)] # Creates a random time
     time_box = driver.find_element(By.ID, 'text_box_Time of Class or Service')
     time_box.send_keys(fake_time)
 
+    # Create a fake alias for the form submission
     user_first_name = names.get_first_name()
     user_last_name = names.get_last_name()
 
+    # Create a fake name and email
     full_name = user_first_name + ' ' + user_last_name
-    email = str(random.randint(0,99)) + user_first_name + '.' + user_last_name + str(random.randint(0,2324)) + '@' + email_sites[random.randint(0,2)] + '.com'
+    email = str(random.randint(0,99)) + user_first_name + key_choice[random.randint(0,2)] + user_last_name + str(random.randint(0,2324)) + '@' + email_sites[random.randint(0,3)] + '.com'
     
+    # Append the fake name and email to the bottom of the form
     submitter_name_box = driver.find_element(By.ID, 'text_box_Submitter\'s Name')
     submitter_name_box.send_keys(full_name)
     submitter_email_box = driver.find_element(By.ID, 'text_box_Submitter\'s Email')
     submitter_email_box.send_keys(email)
 
-    input('')
+    time.sleep(1)
+
+    form_element = driver.find_element(By.CSS_SELECTOR, 'form')
+    form_element.submit()
+
+    print(f'Completed Submission #{i+1} with Name: {fake_name} and Class: {fake_class}')
+    time.sleep(3)
+
+  input('Press enter to continue...')
 
 
 if __name__ == '__main__':
