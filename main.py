@@ -1,5 +1,6 @@
 import selenium
 
+# This function returns the choice of school that the user selects
 def getSchoolChoice():
   print('Welcome to the CSU Cancelled Class spammer')
   print('Currently we have these schools available: ')
