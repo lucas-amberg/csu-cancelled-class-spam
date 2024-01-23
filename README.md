@@ -9,3 +9,17 @@ To use the application download the repository, create a virtual environment, an
 * Python
 * Selenium
 * Names module for random name generation
+
+## How to install:
+
+1. Clone the repository to your local machine either using git or the download ZIP option under `<> Code`
+`git clone git@github.com:lucas-amberg/csu-cancelled-class-spam`
+
+2. CD to the directory and download the required dependencies
+```
+cd csu-cancelled-class-spam
+pip install -r requirements.txt
+```
+
+3. Run main.py
+`python main.py`
