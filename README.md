@@ -10,6 +10,15 @@ To use the application download the repository, create a virtual environment, an
 * Selenium
 * Names module for random name generation
 
+## Currently Works For:
+
+* CSUSB
+* CSUF
+* SDSU
+* Cal Maritime
+* Fresno State
+**(IF I'M MISSING ANY LINKS PLEASE LET ME KNOW AND I WILL ADD SUPPORT)**
+
 ## How to install:
 
 1. Clone the repository to your local machine either using git or the download ZIP option under `<> Code`
