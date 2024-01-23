@@ -30,7 +30,10 @@ def get_school_choice():
   print('Currently we have these schools available: ')
   print('San Bernardino (0)')
   print('Fullerton (1)')
-  available_choices = ['0', '1'] # Array of correct options
+  print('SDSU (2)')
+  print('Maritime (3)')
+  print('Fresno (4)')
+  available_choices = ['0', '1', '2', '3', '4'] # Array of correct options
   choice = ''
 
   # While loop ensures valid selection
@@ -44,8 +47,19 @@ def get_school_choice():
 def spam_form(school_choice):
   if school_choice == 0: # CSUSB
     url = 'https://app.smartsheet.com/b/form/2945d82fd2bc46668b724f4f2e5d87e3'
+    print('\nYou selected: CSUSB\n')
   elif school_choice == 1: # CSUF
     url = 'https://app.smartsheet.com/b/form/758f260d8d114de5bb2ba5877dfe2042'
+    print('\nYou selected: CSUF\n')
+  elif school_choice == 2: # SDSU
+    url = 'https://app.smartsheet.com/b/form/2a7626b7413b4a16989f2ea0b8d86a47'
+    print('\nYou selected: SDSU\n')
+  elif school_choice == 3: # Maritime
+    url = 'https://app.smartsheet.com/b/form/c0d949bcd7f143d3bd167e16efed0ab6'
+    print('\nYou selected: Cal Maritime\n')
+  elif school_choice == 4: # Fresno
+    url = 'https://app.smartsheet.com/b/form/6cafd12187ca442c877c175cc26ed1ad'
+    print('\nYou selected: Fresno State\n')
   
   num_of_entries = input('Please enter the number of entries you would like to do: ')
   driver = webdriver.Chrome()
